@@ -63,30 +63,38 @@ if ($uploadOk == 0) {
     <title>Enviar publicación</title>
 
     <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-3+L/3zCk6xj6+P8z+XvzWzj2Jy7XJQJz+4zvJ7lJzK6v9z5I2Q9JqG6zjzZ8vKzOJ8UJxHfzvz5QfZzJvZLjw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="./Assets/lib/font-awesome.min.css" rel="stylesheet">
     
       <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="./Assets/js/jquery.3.6.0.min.css" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" integrity="sha512-0X4Dvq+6J7z7xv5H7hj4O5L2zZ9U5g7fz9i4ZvJ7zQ5Zz+8vTjyJj7C7d6L1jQf0LwJzQZ8JnJ8Z5j5WJzJWg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/js/bootstrap.bundle.min.js" integrity="sha512-2z0J5t5jL8X1BQJ3p9jKJ7ZK6j9Qv5Y4z2x6zYzL5f2K9K1v7Z8jyJzTzjXeQKg9+5fQb5vTQ+J3Jv5JL6vC5w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="./Assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Stylesheet -->
     <link href="./Assets/css/style.css" rel="stylesheet">
   <link href="./Assets/css/category.css" rel="stylesheet">
 
+    <!-- Toastyfy -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.4.2/toastify.min.css" integrity="sha512-+JkZ3f4Ml4z1JzJzG1y9t0qfjy8z3WJQJz5z0JZL7VJzZJ8cGg6zFJUOvKzKl3G1J2zv6b3a6nY4KvFJQjXv7w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.4.2/toastify.min.js" integrity="sha512-5GnKZl5g5v3QZLzv4xJf5L9zJzXvT1KgQ3Xv7JQJYpX8J3xJQ8QJHj9l0jvZmZ1XfZf6gZK5z9eL5s5fKQJv2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <style>
-html, body {
-    margin-top: 0;
-}
+    body {
+        margin-top: 0;
+    }
 
-.toast-container {
-    z-index: 9999;
-}
+    .toast-container {
+        z-index: 9999;
+    }
 
-.toast {
-    width: 300px;
-}
+    .toast {
+        width: 300px;
+    }
 </style>
 
 </head>
@@ -156,18 +164,23 @@ html, body {
     <script src="./Assets/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
  
     <script>
-        $(document).ready(function() {
-            <?php
-            if (!empty($_SESSION['warning'])) {
-                ?>
-                var warning = '<?php echo $_SESSION['warning']; ?>';
-                $('.toast-body').html(warning);
-                $('.toast').toast('show');
-                <?php
-                unset($_SESSION['warning']);
-            }
+    $(document).ready(function() {
+        <?php
+        if (!empty($_SESSION['warning'])) {
             ?>
-        });
-    </script>
+            Toastify({
+                text: '<?php echo $_SESSION['warning']; ?>',
+                duration: 3000,
+                gravity: "bottom",
+                position: "end",
+                backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
+                stopOnFocus: true,
+            }).showToast();
+            <?php
+            unset($_SESSION['warning']);
+        }
+        ?>
+    });
+</script>
 </body>
 </html>
