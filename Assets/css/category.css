@@ -1,0 +1,15 @@
+﻿.category {
+    background-color: #f8f9fa;
+    border: none;
+    border-radius: 0;
+    height: 50px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #212529;
+}
+
+.category option {
+    background-color: #fff;
+    color: #212529;
+}
